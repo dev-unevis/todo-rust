@@ -29,16 +29,27 @@ pub fn list() -> Vec<Task> {
 }
 
 pub fn add(title: String) {
+    let mut tasks = list();
+    let last_task = tasks.get(tasks.len() - 1).unwrap();
+
     let task = Task {
-        id: 2,
+        id: last_task.id + 1,
         title: title,
         status: Status::ToDo,
         created_at: current_time(),
     };
 
-    let mut tasks = list();
-
     tasks.push(task);
 
     storage::write(tasks);
 }
+
+pub fn remove(id: i32) {
+    let mut tasks = list();
+
+    tasks = tasks.into_iter().filter(|task| task.id != id).collect();
+
+    storage::write(tasks);
+}
+
+pub fn update() {}

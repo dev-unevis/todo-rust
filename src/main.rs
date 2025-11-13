@@ -16,6 +16,11 @@ fn main() {
                 println!("Please insert a todo title!");
             }
         }
+        Some("remove") => {
+            if let Some(id) = args.get(2) {
+                task::remove(id.parse().unwrap());
+            }
+        }
         _ => println!("Unknown command"),
     }
 }
