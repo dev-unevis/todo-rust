@@ -21,6 +21,11 @@ fn main() {
                 task::remove(id.parse().unwrap());
             }
         }
+        Some("update") => {
+            if let (Some(id), Some(title)) = (args.get(2), args.get(3)) {
+                task::update(id.parse().unwrap(), title.to_string());
+            }
+        }
         _ => println!("Unknown command"),
     }
 }

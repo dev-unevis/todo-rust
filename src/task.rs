@@ -1,7 +1,7 @@
 use chrono::{DateTime, Local};
 use serde::{Deserialize, Serialize};
 
-use crate::storage;
+use crate::{storage};
 
 // Provide default for created_at
 fn current_time() -> DateTime<Local> {
@@ -52,4 +52,11 @@ pub fn remove(id: i32) {
     storage::write(tasks);
 }
 
-pub fn update() {}
+pub fn update(id: i32, title: String) {
+    let mut tasks = list();
+
+    let task_to_update = tasks.iter_mut().find(|t| t.id == id).unwrap();
+    task_to_update.title = title;
+
+    storage::write(tasks);
+}

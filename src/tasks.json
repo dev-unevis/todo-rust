@@ -4,5 +4,11 @@
     "title": "Build a todo app!",
     "status": "InProgress",
     "created_at": "2025-11-09T21:31:43.579546200+01:00"
+  },
+  {
+    "id": 2,
+    "title": "Go to the shop",
+    "status": "ToDo",
+    "created_at": "2025-11-15T19:35:06.743884713+01:00"
   }
 ]
